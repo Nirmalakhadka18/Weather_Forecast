@@ -1,0 +1,533 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom animations and styles for WeatherMood */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200px 0; }
+  100% { background-position: calc(200px + 100%) 0; }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.6s ease-out;
+}
+
+.shimmer {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200px 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* Weather Animation Keyframes */
+@keyframes rainfall {
+  0% { 
+    transform: translateY(-100vh) rotate(10deg); 
+    opacity: 1; 
+  }
+  100% { 
+    transform: translateY(100vh) rotate(10deg); 
+    opacity: 0; 
+  }
+}
+
+@keyframes snowfall {
+  0% { 
+    transform: translateY(-100vh) rotate(0deg); 
+    opacity: 1; 
+  }
+  100% { 
+    transform: translateY(100vh) rotate(360deg); 
+    opacity: 0; 
+  }
+}
+
+@keyframes lightning {
+  0%, 90%, 100% { 
+    opacity: 0; 
+  }
+  5%, 10% { 
+    opacity: 0.8; 
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+  }
+}
+
+@keyframes sunGlow {
+  0%, 100% { 
+    transform: scale(1) rotate(0deg); 
+    filter: brightness(1) drop-shadow(0 0 10px rgba(255, 193, 7, 0.3)); 
+  }
+  50% { 
+    transform: scale(1.1) rotate(180deg); 
+    filter: brightness(1.2) drop-shadow(0 0 20px rgba(255, 193, 7, 0.5)); 
+  }
+}
+
+@keyframes cloudFloat {
+  0%, 100% { 
+    transform: translateX(-20px) translateY(0px); 
+  }
+  33% { 
+    transform: translateX(10px) translateY(-5px); 
+  }
+  66% { 
+    transform: translateX(20px) translateY(5px); 
+  }
+}
+
+@keyframes sparkle {
+  0%, 100% { 
+    opacity: 0; 
+    transform: scale(0) rotate(0deg); 
+  }
+  50% { 
+    opacity: 1; 
+    transform: scale(1) rotate(180deg); 
+  }
+}
+
+/* Glass morphism effect */
+.glass {
+  backdrop-filter: blur(16px) saturate(180%);
+  background-color: rgba(255, 255, 255, 0.75);
+  border: 1px solid rgba(209, 213, 219, 0.3);
+}
+
+.glass-dark {
+  backdrop-filter: blur(16px) saturate(180%);
+  background-color: rgba(17, 24, 39, 0.75);
+  border: 1px solid rgba(75, 85, 99, 0.3);
+}
+
+/* Weather icons glow effects */
+.weather-icon-sunny {
+  filter: drop-shadow(0 0 20px rgba(251, 191, 36, 0.6));
+}
+
+.weather-icon-rainy {
+  filter: drop-shadow(0 0 20px rgba(59, 130, 246, 0.6));
+}
+
+.weather-icon-cloudy {
+  filter: drop-shadow(0 0 20px rgba(156, 163, 175, 0.6));
+}
+
+.weather-icon-snowy {
+  filter: drop-shadow(0 0 20px rgba(219, 234, 254, 0.8));
+}
+
+/* Gradient backgrounds for different weather moods */
+.bg-sunny {
+  background: linear-gradient(135deg, #FEF3C7 0%, #F59E0B 50%, #D97706 100%);
+}
+
+.bg-rainy {
+  background: linear-gradient(135deg, #DBEAFE 0%, #3B82F6 50%, #1E40AF 100%);
+}
+
+.bg-cloudy {
+  background: linear-gradient(135deg, #F3F4F6 0%, #9CA3AF 50%, #6B7280 100%);
+}
+
+.bg-snowy {
+  background: linear-gradient(135deg, #F8FAFC 0%, #E2E8F0 50%, #CBD5E1 100%);
+}
+
+/* Music player styles */
+.music-card {
+  transition: all 0.3s ease;
+}
+
+.music-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Music Player Responsive Styles */
+@media (max-width: 640px) {
+  /* Ensure iframe is responsive on mobile */
+  iframe {
+    max-width: 100%;
+    height: auto;
+    min-height: 200px;
+  }
+  
+  /* Mobile music controls */
+  .music-card {
+    min-height: 80px;
+    padding: 0.5rem;
+  }
+  
+  /* Touch-friendly buttons */
+  .music-controls button {
+    min-width: 48px;
+    min-height: 48px;
+    touch-action: manipulation;
+  }
+  
+  /* Improve button visibility */
+  .bg-white\/20 {
+    background-color: rgba(255, 255, 255, 0.3) !important;
+  }
+  
+  /* Better touch feedback */
+  button:active {
+    transform: scale(0.95);
+    transition: transform 0.1s;
+  }
+  
+  /* Progress bar touch area */
+  .progress-bar {
+    padding: 8px 0;
+    margin: -8px 0;
+  }
+  
+  /* Enhanced visibility for controls */
+  .music-player-controls {
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+  }
+}
+
+/* Custom music player animations */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.playing-indicator {
+  animation: pulse 2s infinite;
+}
+
+/* Progress bar animations */
+@keyframes progress {
+  0% { width: 0%; }
+  100% { width: 100%; }
+}
+
+.progress-animated {
+  animation: progress 4s linear infinite;
+}
+
+/* Volume slider improvements */
+.volume-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.volume-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 12px;
+  width: 12px;
+  border-radius: 50%;
+  background: white;
+  cursor: pointer;
+}
+
+/* Activity card hover effects */
+.activity-card {
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.activity-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.activity-card:hover::before {
+  left: 100%;
+}
+
+.activity-card:hover {
+  transform: scale(1.05);
+}
+
+/* Loading spinner */
+.spinner {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #3498db;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Responsive text sizing */
+@layer utilities {
+  .text-responsive {
+    @apply text-sm sm:text-base md:text-lg lg:text-xl;
+  }
+  
+  .text-responsive-large {
+    @apply text-lg sm:text-xl md:text-2xl lg:text-3xl;
+  }
+}
+
+/* Leaflet Map Custom Styles */
+.custom-weather-marker {
+  background: transparent !important;
+  border: none !important;
+}
+
+.leaflet-popup-content-wrapper {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.leaflet-popup-tip {
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.leaflet-control-zoom {
+  border: none !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+}
+
+.leaflet-control-zoom a {
+  background: rgba(30, 41, 59, 0.9) !important;
+  color: white !important;
+  border: none !important;
+  backdrop-filter: blur(10px);
+}
+
+.leaflet-control-zoom a:hover {
+  background: rgba(51, 65, 85, 0.9) !important;
+}
+
+/* Weather overlay styles */
+.leaflet-layer {
+  filter: contrast(1.2) brightness(1.1);
+}
+
+/* Map Location Selector Styles */
+.leaflet-container {
+  background: #1e293b !important;
+}
+
+/* Custom marker styles */
+.leaflet-marker-icon {
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+}
+
+/* Ensure proper stacking order for location selector */
+.location-selector-container {
+  position: relative;
+  z-index: 1;
+}
+
+/* Map container should not overlap other elements */
+.leaflet-container {
+  position: relative;
+  z-index: 1;
+}
+
+/* Ensure input forms don't float above maps */
+.location-input-card {
+  position: relative;
+  z-index: 2;
+  margin-top: 2rem;
+}
+
+/* Prevent any absolute positioning issues */
+.map-location-selector {
+  position: relative;
+  z-index: 1;
+}
+
+/* Fix any potential flex ordering issues */
+.location-selection-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Responsive map adjustments */
+@media (max-width: 768px) {
+  .leaflet-popup-content-wrapper {
+    max-width: 250px;
+  }
+}
+
+@media (max-width: 640px) {
+  .leaflet-control-zoom {
+    zoom: 0.8;
+  }
+  
+  .leaflet-popup-content-wrapper {
+    max-width: 200px;
+  }
+}
+
+/* Mobile-first responsive improvements */
+@media (max-width: 640px) {
+  /* Header responsive adjustments */
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  /* Ensure full width on mobile */
+  .max-w-4xl, .max-w-6xl, .max-w-2xl {
+    max-width: 100%;
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+  
+  /* Mobile grid adjustments */
+  .grid {
+    gap: 0.75rem;
+  }
+  
+  /* Mobile text sizing */
+  h1 {
+    font-size: 2.5rem !important;
+    line-height: 1.2;
+  }
+  
+  h3 {
+    font-size: 1.25rem !important;
+  }
+  
+  /* Mobile button sizing */
+  button {
+    min-height: 44px; /* iOS touch target */
+    padding: 0.75rem 1rem;
+  }
+  
+  /* Mobile input improvements */
+  input {
+    font-size: 16px !important; /* Prevents zoom on iOS */
+    min-height: 44px;
+  }
+  
+  /* Mobile card spacing */
+  .bg-slate-800\/90, .bg-slate-700\/40 {
+    margin-bottom: 1rem;
+  }
+  
+  /* Mobile-specific animations */
+  .animate-fadeIn {
+    animation-duration: 0.3s;
+  }
+}
+
+/* Touch-friendly improvements */
+@media (hover: none) {
+  .hover\:bg-slate-600\/50:hover {
+    background-color: rgba(71, 85, 105, 0.5);
+  }
+  
+  .cursor-pointer {
+    cursor: default;
+  }
+}
+
+/* Safe area adjustments for mobile devices */
+@supports (padding: max(0px)) {
+  .container {
+    padding-left: max(1rem, env(safe-area-inset-left));
+    padding-right: max(1rem, env(safe-area-inset-right));
+  }
+}
+
+/* Improved scrollbar for mobile */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.5);
+  border-radius: 2px;
+}
+
+/* Mobile landscape adjustments */
+@media (max-width: 640px) and (orientation: landscape) {
+  .min-h-screen {
+    min-height: 100vh;
+  }
+  
+  header {
+    margin-bottom: 2rem;
+  }
+  
+  .text-4xl {
+    font-size: 2rem;
+  }
+  
+  .music-player-container {
+    max-height: 60vh;
+    overflow-y: auto;
+  }
+}
+
+/* Play/Pause button animations */
+@keyframes pulse-play {
+  0%, 100% { 
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4);
+  }
+  50% { 
+    box-shadow: 0 0 0 8px rgba(255, 255, 255, 0);
+  }
+}
+
+.playing-button {
+  animation: pulse-play 2s infinite;
+}
+
+/* Progress bar enhancements */
+.progress-bar-container:hover .progress-thumb {
+  opacity: 1;
+  transform: scale(1.2);
+}
+
+/* Touch device specific styles */
+@media (hover: none) and (pointer: coarse) {
+  .hover\:bg-white\/30:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+  }
+  
+  /* Always show progress thumb on touch devices */
+  .progress-thumb {
+    opacity: 1 !important;
+  }
+  
+  /* Larger touch targets */
+  button {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
