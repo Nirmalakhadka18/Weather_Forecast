@@ -130,6 +130,6 @@ MIT License — feel free to use, modify and distribute.
 
 ## 🙋‍♂️ Author
 
-Built with ❤️ by [Your Name](https://github.com/your-username)
+Built with ❤️ by [Nirmala Khadka](https://github.com/your-username)
 
 ⭐ Star this repo if you found it useful!
