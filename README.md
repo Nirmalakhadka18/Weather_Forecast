@@ -1,4 +1,10 @@
-# React + Vite
+# 🌈 WeatherMood
+
+🚀 **Live Demo:** [https://weather-forecast-fk26.onrender.com](https://weather-forecast-fk26.onrender.com)
+
+A weather forecast app built with React + Vite that provides outfit suggestions, music recommendations, and activity ideas based on current weather conditions.
+
+## React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
